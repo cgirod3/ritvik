@@ -1,26 +1,37 @@
-import logo from '../assets/logo.svg';
+import React, { useEffect } from 'react';
 
 import '../styles/containers/Home.css';
 
-function Home() {
+const Home = () => {
+
+  useEffect(() => {
+    const homeDiv = document.getElementsByClassName('Home')[0];
+    const transformScroll = (event) => {
+      console.log('\n\n\nevent', event);
+      if (!event.deltaY) {
+        return;
+      }
+
+      homeDiv.scrollLeft += event.deltaY;
+    }
+
+    const element = document.scrollingElement || document.documentElement;
+    element.addEventListener('wheel', transformScroll);
+
+    return () => {
+      element.removeEventListener('wheel', transformScroll);
+    };
+  }, []);
+
   return (
-    <div className="Home">
-      <header className="Home-header">
-        <img src={logo} className="Home-logo" alt="logo" />
-        <p>
-          Edit <code>src/Home.js</code> and save to reload.
-        </p>
-        <a
-          className="Home-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='Home'>
+      <h3>PRINT</h3>
+      <h3>STILL</h3>
+      <h3>MOVING</h3>
+      <h3>SOUND</h3>
+      <h3>SOUL</h3>
     </div>
   );
-}
+};
 
 export default Home;
