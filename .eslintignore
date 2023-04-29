@@ -1,5 +1,5 @@
+.husky/
 node_modules/
 public/
 .gitignore
 README.md
-package-lock.json
